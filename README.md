@@ -1,5 +1,16 @@
 # k8s-operator-example
-## 部署方式
+
+利用 python operator 框架 创建k8s operator，本项目使用 kopf框架。
+kopf文档：https://kopf.readthedocs.io/en/latest/
+kopf项目：https://github.com/zalando-incubator/kopf
+
+可以实时监控k8s中的事件，并做出相应的操作，下面是一些例子：
+1. 你可以监控service的创建，并把service的name和ip送到route53中创建相应的域名。参考：https://github.com/email2liyang/kubernetes-service-dns-exporter
+2. 你可以使用自定义一些资源创建新的pod。
+
+下面例子，是使用自定义一些资源创建新的pod。
+
+## kopf部署方式
 有两种部署方式：
 1. 在k8s集群中部署.
 2. 在k8s集群外部署。
