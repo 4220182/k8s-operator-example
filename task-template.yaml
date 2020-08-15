@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {name}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: task
+      release: {name}
+  template:
+    metadata:
+      labels:
+        app: task
+        release: {name}
+    spec:
+      containers:
+      - name: task
+        imagePullPolicy: IfNotPresent
+        image: busybox:latest
+        command: ["sleep"]
+        args: ["5000"]
+        env:
+          - name: RULE
+            value: "{rule}"
+        ports:
+        - containerPort: 8080

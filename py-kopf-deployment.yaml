@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: py-kopf-operator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: py-kopf-operator
+      release: py-kopf-operator
+  template:
+    metadata:
+      labels:
+        app: py-kopf-operator
+        release: py-kopf-operator
+    spec:
+      serviceAccountName: admin-sa
+      containers:
+      - name: kopf
+        imagePullPolicy: IfNotPresent
+        image: koza/k8s-operator-example:latest
