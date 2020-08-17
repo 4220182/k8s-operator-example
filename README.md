@@ -26,6 +26,7 @@ $ docker push koza/k8s-operator-example:latest
 1.3.部署：
 
 先创建一个sa（此opera的任务是创建一个PO，所以需要一个具备创建pod权限的sa，这里简单直接赋予cluster-admin），此sa配置在部署文件（py-kopf-deployment.yaml）中。
+(你也可以利用：rbac-example.yaml创建)
 ```shell
 $ kubectl create sa admin-sa
 $ kubectl create clusterrolebinding test-admin-sa \
